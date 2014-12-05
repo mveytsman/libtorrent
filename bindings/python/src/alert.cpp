@@ -208,6 +208,11 @@ void bind_alert()
         .def_readonly("request", &invalid_request_alert::request)
         ;
 
+    class_<request_alert, bases<peer_alert>, noncopyable>(
+        "request_alert", no_init)
+        .def_readonly("request", &request_alert::request)
+        ;
+
     class_<peer_request>("peer_request")
         .def_readonly("piece", &peer_request::piece)
         .def_readonly("start", &peer_request::start)

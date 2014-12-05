@@ -232,6 +232,13 @@ namespace libtorrent {
 		return ret;
 	}
 
+  std::string request_alert::message() const
+	{
+		char ret[200];
+		snprintf(ret, sizeof(ret), "%s peer sent a piece request (piece: %u start: %u len: %u)"
+			, peer_alert::message().c_str(), request.piece, request.start, request.length);
+		return ret;
+	}
 
 	std::string piece_finished_alert::message() const
 	{

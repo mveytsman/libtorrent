@@ -1960,7 +1960,11 @@ namespace libtorrent
 		peer_log("<== REQUEST [ piece: %d s: %d l: %d ]"
 			, r.piece, r.start, r.length);
 #endif
-
+    if (t->alerts().should_post<request_alert>())
+		{
+      t->alerts().post_alert(request_alert(
+		 		t->get_handle(), m_remote, m_peer_id, r));
+		}
 		if (t->super_seeding()
 			&& !super_seeded_piece(r.piece))
 		{
