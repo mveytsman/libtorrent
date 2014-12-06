@@ -104,6 +104,7 @@ void bind_torrent_status()
         .def_readonly("queue_position", &torrent_status::queue_position)
         .def_readonly("need_save_resume", &torrent_status::need_save_resume)
         .def_readonly("ip_filter_applies", &torrent_status::ip_filter_applies)
+        .def_readonly("name", &torrent_status::name)
         ;
 
     enum_<torrent_status::state_t>("states")
